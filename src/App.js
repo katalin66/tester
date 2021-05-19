@@ -1,19 +1,36 @@
 // import './App.css';
-import NavBar from './NavBar';
-import Home from './Home';
-import TodoList from './component/TodoList'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavBar from "./NavBar";
+import Home from "./Home";
+// import TodoList from './component/TodoList'
+import Create from "./Create";
+import BlogDetails from "./BlogDetails";
+import NotFound from "./NotFound";
 
 function App() {
   return (
-    <>
-      {/* <NavBar />
+    <Router>
+      <NavBar />
       <div className="content">
-        <Home />
-      </div> */}
-      <div className="todo-app">
-        <TodoList />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/create">
+            <Create />
+          </Route>
+          <Route path="/blogs/:id">
+            <BlogDetails />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
       </div>
-    </>
+      {/* <div className="todo-app">
+        <TodoList />
+      </div> */}
+    </Router>
   );
 }
 
